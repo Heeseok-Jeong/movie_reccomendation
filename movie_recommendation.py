@@ -1,4 +1,3 @@
-# 패키지 import
 from pathlib import Path
 import pandas as pd
 import numpy as np
@@ -7,22 +6,13 @@ import torch.nn as nn
 import torch.nn.functional as F
 import time
 
-# data = pd.read_csv('./ml-25m/ratings.csv')
 data = pd.read_csv('./ml-latest-small/ratings.csv')
-print(data.shape)
 
-# 데이터를 Train과 Validation(=Test)데이터 6:4 비율로 나눔
 np.random.seed(3)
 msk1 = np.random.rand(len(data)) < 0.6
 train = data[msk1].copy()
 val = data[~msk1].copy()
 test = data[~msk1].copy()
-print(train.head())
-print(train.shape)
-print(val.head())
-print(val.shape)
-print(test.head())
-print(test.shape)
 
 # 다음은 Pandas의 컬럼을 범주형의 id로 인코드해주는 함수이다
 # train_col이 있을 때(valid or test), 여기 없는 사용자 id나 영화이름을 가진 데이터는 사라짐
